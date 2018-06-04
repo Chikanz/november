@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class introBonito : MonoBehaviour
+public class IntroBonito : MonoBehaviour
 {
     public GameObject Canvas;
     public GameObject FPS;
+
+    public Interactable Lamp;
 
     // Use this for initialization
     void Start () {
@@ -27,13 +30,21 @@ public class introBonito : MonoBehaviour
     /// </summary>
     public void EndOfIntro()
     {
+        if(!EditorApplication.isPlaying) return;
+        
         ToggleObjects(true);
     }
 
     void ToggleObjects(bool on)
     {
-        Canvas.SetActive(!on);
+        if(Canvas) Destroy(Canvas);
         FPS.SetActive(on);
         GetComponent<Camera>().enabled = !on;
+        gameObject.SetActive(!on);
+    }
+
+    public void ToggleLamp()
+    {
+        Lamp.Interact();
     }
 }

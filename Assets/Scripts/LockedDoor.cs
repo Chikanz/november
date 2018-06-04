@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 
 public class LockedDoor : Interactable
-{
+{		
     // Use this for initialization
     void Start ()
     {

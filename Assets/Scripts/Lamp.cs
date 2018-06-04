@@ -1,15 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
 public class Lamp : Interactable
 {
-    public bool isOn = false;
-
     public GameObject EmissionObj;
 
-    public Color EmissionColor;
+    public Color EmissionColor;    
+    
+    // Use this for initialization
+    protected override void Start()
+    {
+        base.Start();
+        ToggleLight();        
+    }
 
     public override void Interact()
     {
@@ -23,16 +29,9 @@ public class Lamp : Interactable
     {
         GetComponentInChildren<Light>().enabled = isOn;
         EmissionObj.GetComponent<Renderer>().material.SetColor("_EmissionColor", isOn ? EmissionColor : Color.black);
+        UpdateProbe.OnOnLightChanged();
     }
 
-    // Use this for initialization
-    void Start ()
-    {
-        ToggleLight();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+
 }

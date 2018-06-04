@@ -9,8 +9,6 @@ public class TV : Interactable
 
     public AudioClip Switch;
 
-    bool isOn = false;
-
     public override void Interact()
     {
         isOn = !isOn;        
@@ -19,16 +17,7 @@ public class TV : Interactable
         PlaneOn.SetActive(isOn);
 
         GetComponent<AudioSource>().Stop();
-        GetComponent<AudioSource>().PlayOneShot(Switch);
+        GetComponent<AudioSource>().volume = 1;
+        GetComponent<AudioSource>().PlayOneShot(Switch,1);
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class radio : Interactable
 {
-    bool isOn = false;
-
     public AudioClip Switch;
 
     AudioSource myAudio;
@@ -29,6 +27,7 @@ public class radio : Interactable
     // Use this for initialization
     void Start ()
     {
+        base.Start();
         myAudio = GetComponent<AudioSource>();        
     }
 	

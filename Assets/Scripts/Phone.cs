@@ -1,53 +1,63 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Phone : Interactable
 {
-    public GameObject reciever;
+    public GameObject Reciever;
     public AudioClip Pickup;
     public AudioClip Tone;
-    public AudioClip Putdown;
+    public AudioClip Putdown;    
 
-    bool pickedUp = false;
-
-    AudioSource myAudio;
+    AudioSource _myAudio;
+    [NotNull] [SerializeField] private AudioClip RingingClip;
 
     public override void Interact()
     {
-        if(!pickedUp)
+        if(!isOn)
         {
-            pickedUp = true;
-            reciever.SetActive(false);
-            myAudio.Stop(); //Stop ringing
+            isOn = true;
+            Reciever.SetActive(false);
+            _myAudio.Stop(); //Stop ringing
 
-            myAudio.PlayOneShot(Pickup);
+            _myAudio.PlayOneShot(Pickup);
 
-            Invoke("playTone", 0.5f);
+            Invoke("PlayTone", 0.5f);
         }
         else
         {
-            reciever.SetActive(true);
-            pickedUp = false;
-            myAudio.Stop();
-            myAudio.PlayOneShot(Putdown);
+            Reciever.SetActive(true);
+            isOn = false;
+            _myAudio.Stop();
+            _myAudio.PlayOneShot(Putdown);
         }
     }
 
-   void playTone()
+    private void PlayTone()
     {
-        myAudio.clip = Tone;
-        myAudio.Play();
+        _myAudio.clip = Tone;
+        _myAudio.Play();
+    }
+
+    private void Ring()
+    {    
+        _myAudio.clip = RingingClip;
+        _myAudio.Play();
     }
 
     // Use this for initialization
-    void Start ()
+    protected override void Start()
     {
-        myAudio = GetComponent<AudioSource>();
+        _myAudio = GetComponent<AudioSource>();
+        Ring();
+        
+        DoorCamera.OnLevelEnd += DoorCameraOnOnLevelEnd;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    private void DoorCameraOnOnLevelEnd(object sender, EventArgs e)
+    {
+        Ring();
+    }
 }

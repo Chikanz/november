@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,9 +8,7 @@ public class Switch : Interactable
     public GameObject[] Lights;
     public AudioClip SwitchClip;
 
-    public Transform SwitchObj;
-
-    public bool isOn = false;
+    public Transform SwitchObj;   
 
     public override void Interact()
     {
@@ -18,23 +17,26 @@ public class Switch : Interactable
 
         GetComponent<AudioSource>().PlayOneShot(SwitchClip);
 
-        SwitchObj.rotation = Quaternion.Euler(isOn ? 80 : 0, SwitchObj.eulerAngles.y, SwitchObj.eulerAngles.z);
+        SwitchObj.rotation = Quaternion.Euler(isOn ? 80 : 0, SwitchObj.eulerAngles.y, SwitchObj.eulerAngles.z);                
     }
 
-    public void ToggleLights(bool on)
-    {
+    private void ToggleLights(bool on)
+    {        
         foreach (GameObject g in Lights)
         {
             g.SetActive(on);
         }
+        
+        UpdateProbe.OnOnLightChanged();
     }
 
     // Use this for initialization
-    void Start ()
+    protected override void Start()
     {
+        base.Start();
         ToggleLights(isOn);
     }
-	
+    
 	// Update is called once per frame
 	void Update () {
 		
