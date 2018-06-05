@@ -6,18 +6,41 @@ public class TV : Interactable
 {
     public GameObject PlaneOn;
     public GameObject PlaneOff;
+    public GameObject Escape;
 
     public AudioClip Switch;
 
     public override void Interact()
     {
-        isOn = !isOn;        
+        if(!CanInteract) return;
+        
+        IsOn = !IsOn;        
 
-        PlaneOff.SetActive(!isOn);
-        PlaneOn.SetActive(isOn);
+        PlaneOff.SetActive(!IsOn);
+        PlaneOn.SetActive(IsOn);
 
         GetComponent<AudioSource>().Stop();
         GetComponent<AudioSource>().volume = 1;
         GetComponent<AudioSource>().PlayOneShot(Switch,1);
+    }
+
+    protected override void OnLevelEnd(int i)
+    {
+        base.OnLevelEnd(i);
+        if (i == 1)
+        {
+            CanInteract = false;            
+        }
+        
+        else if (i == 2)
+        {
+            Invoke("TurnOnEscape", Random.Range(5,15));
+        }
+    }
+
+
+    public void TurnOnEscape()
+    {
+        Escape.SetActive(true);
     }
 }

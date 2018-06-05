@@ -10,54 +10,61 @@ public class Phone : Interactable
     public AudioClip Pickup;
     public AudioClip Tone;
     public AudioClip Putdown;    
-
-    AudioSource _myAudio;
+    
     [NotNull] [SerializeField] private AudioClip RingingClip;
 
     public override void Interact()
     {
-        if(!isOn)
+        if (!CanInteract) return;
+        
+        if(!IsOn)
         {
-            isOn = true;
+            IsOn = true;
             Reciever.SetActive(false);
-            _myAudio.Stop(); //Stop ringing
+            MyAudio.Stop(); //Stop ringing
 
-            _myAudio.PlayOneShot(Pickup);
+            MyAudio.PlayOneShot(Pickup);
 
             Invoke("PlayTone", 0.5f);
         }
         else
         {
             Reciever.SetActive(true);
-            isOn = false;
-            _myAudio.Stop();
-            _myAudio.PlayOneShot(Putdown);
+            IsOn = false;
+            MyAudio.Stop();
+            MyAudio.PlayOneShot(Putdown);
         }
     }
 
     private void PlayTone()
     {
-        _myAudio.clip = Tone;
-        _myAudio.Play();
+        MyAudio.clip = Tone;
+        MyAudio.Play();
     }
 
     private void Ring()
     {    
-        _myAudio.clip = RingingClip;
-        _myAudio.Play();
+        MyAudio.clip = RingingClip;
+        MyAudio.Play();
     }
 
     // Use this for initialization
     protected override void Start()
     {
-        _myAudio = GetComponent<AudioSource>();
+        base.Start();        
         Ring();
-        
-        DoorCamera.OnLevelEnd += DoorCameraOnOnLevelEnd;
     }
 
-    private void DoorCameraOnOnLevelEnd(object sender, EventArgs e)
+    protected override void OnLevelEnd(int i)
     {
+        base.OnLevelEnd(i);
         Ring();
+
+        if (i == 2)
+        {
+            CanInteract = false;
+            Reciever.SetActive(false);
+        }
+        
     }
 }

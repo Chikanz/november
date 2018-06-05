@@ -19,7 +19,7 @@ public class Lamp : Interactable
 
     public override void Interact()
     {
-        isOn = !isOn;
+        IsOn = !IsOn;
 
         GetComponent<PlayableDirector>().Play();
         Invoke("ToggleLight", 0.15f);
@@ -27,8 +27,8 @@ public class Lamp : Interactable
 
     void ToggleLight()
     {
-        GetComponentInChildren<Light>().enabled = isOn;
-        EmissionObj.GetComponent<Renderer>().material.SetColor("_EmissionColor", isOn ? EmissionColor : Color.black);
+        GetComponentInChildren<Light>().enabled = IsOn;
+        EmissionObj.GetComponent<Renderer>().material.SetColor("_EmissionColor", IsOn ? EmissionColor : Color.black);
         UpdateProbe.OnOnLightChanged();
     }
 

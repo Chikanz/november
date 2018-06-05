@@ -5,33 +5,38 @@ using UnityEngine;
 public class radio : Interactable
 {
     public AudioClip Switch;
-
-    AudioSource myAudio;
+    public AudioClip CryingStatic;
 
     public GameObject Knob;
 
     public override void Interact()
     {
-        isOn = !isOn;
+        IsOn = !IsOn;
 
-        if (isOn)
-            myAudio.Play();
+        if (IsOn)
+            MyAudio.Play();
         else
-            myAudio.Stop();
+            MyAudio.Stop();
 
-        myAudio.PlayOneShot(Switch);
+        MyAudio.PlayOneShot(Switch);
 
-        Knob.transform.rotation = Quaternion.Euler(isOn ? -87 : 0, Knob.transform.eulerAngles.y, Knob.transform.eulerAngles.z);
+        Knob.transform.rotation = Quaternion.Euler(IsOn ? -87 : 0, Knob.transform.eulerAngles.y, Knob.transform.eulerAngles.z);
     }
 
     // Use this for initialization
     void Start ()
     {
         base.Start();
-        myAudio = GetComponent<AudioSource>();        
+        MyAudio = GetComponent<AudioSource>();        
     }
-	
-	// Update is called once per frame
+
+    protected override void OnLevelEnd(int i)
+    {
+        base.OnLevelEnd(i);
+        if (i == 1) MyAudio.clip = CryingStatic;
+    }
+
+    // Update is called once per frame
 	void Update () {
 		
 	}

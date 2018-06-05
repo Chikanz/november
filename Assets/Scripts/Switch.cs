@@ -12,12 +12,13 @@ public class Switch : Interactable
 
     public override void Interact()
     {
-        isOn = !isOn;
-        ToggleLights(isOn);
+        IsOn = !IsOn;
+        
+        if(CanInteract) ToggleLights(IsOn);
 
-        GetComponent<AudioSource>().PlayOneShot(SwitchClip);
+        MyAudio.PlayOneShot(SwitchClip);
 
-        SwitchObj.rotation = Quaternion.Euler(isOn ? 80 : 0, SwitchObj.eulerAngles.y, SwitchObj.eulerAngles.z);                
+        SwitchObj.rotation = Quaternion.Euler(IsOn ? 80 : 0, SwitchObj.eulerAngles.y, SwitchObj.eulerAngles.z);                
     }
 
     private void ToggleLights(bool on)
@@ -30,11 +31,18 @@ public class Switch : Interactable
         UpdateProbe.OnOnLightChanged();
     }
 
+    protected override void OnLevelEnd(int i)
+    {
+        base.OnLevelEnd(i);
+        if(i == 2)
+            CanInteract = false;
+    }
+
     // Use this for initialization
     protected override void Start()
     {
         base.Start();
-        ToggleLights(isOn);
+        ToggleLights(IsOn);
     }
     
 	// Update is called once per frame
