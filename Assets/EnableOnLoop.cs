@@ -15,13 +15,13 @@ public class EnableOnLoop : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		DoorCamera.OnLevelEnd += DoorCameraOnOnLevelEnd;
+		Door.OnLevelEnd += DoorCameraOnOnLevelEnd;
 		if(ToEnable) ToEnable.enabled = false;
 	}
 
 	private void DoorCameraOnOnLevelEnd(object sender, EventArgs e)
 	{
-		if (DoorCamera.loopNum == LoopNo)
+		if (Door.loopNum == LoopNo)
 		{
 			if (ToEnable) ToEnable.enabled = true;
 			if (AS) Invoke("DelayAudio", ASdelay);

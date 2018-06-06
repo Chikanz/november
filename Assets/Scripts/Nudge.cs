@@ -16,7 +16,7 @@ public class Nudge : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		DoorCamera.OnLevelEnd += DoorCameraOnOnLevelEnd;
+		Door.OnLevelEnd += DoorCameraOnOnLevelEnd;
 		_startPos = transform.position;
 		_startRot = transform.rotation;	
 	}

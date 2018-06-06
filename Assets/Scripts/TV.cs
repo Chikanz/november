@@ -30,12 +30,9 @@ public class TV : Interactable
         if (i == 1)
         {
             CanInteract = false;            
-        }
+        }              
         
-        else if (i == 2)
-        {
-            Invoke("TurnOnEscape", Random.Range(5,15));
-        }
+        Escape.SetActive(false);
     }
 
 

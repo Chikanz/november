@@ -11,7 +11,11 @@ public class IntroBonito : MonoBehaviour
     public GameObject FakeWall;
     public GameObject Door;
 
+    public GameObject BreakingIn;
+
     public Interactable Lamp;
+
+    public GameObject[] Lights;
 
     // Use this for initialization
     void Start ()
@@ -33,25 +37,38 @@ public class IntroBonito : MonoBehaviour
     /// </summary>
     public void EndOfIntro()
     {
+        #if UNITY_EDITOR
         if(!EditorApplication.isPlaying) return;
+        #endif
         
         ToggleObjects(true);
 
-        if (DoorCamera.loopNum == 2)
+        if (global::Door.loopNum == 2)
         {
-            Invoke("Run",5);
+            Invoke("Banging",11);
+            Invoke("Run",15);
         }
         
     }
-
+    
     //End game
     private void Run()
     {
         Canvas.SetActive(true);
-        FPS.GetComponent<FirstPersonController>().m_WalkSpeed = 10;
+        FPS.GetComponent<FirstPersonController>().m_WalkSpeed = 9;
         Invoke("ToggleCanvasOff", 0.5f);
         FakeWall.transform.Translate(-2.7f,0,0);
         Door.SetActive(false);
+
+        foreach (GameObject g in Lights)
+        {
+            g.SetActive(true);
+        }
+    }
+
+    void Banging()
+    {
+        BreakingIn.SetActive(true);
     }
 
     private void ToggleCanvasOff()

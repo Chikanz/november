@@ -15,14 +15,14 @@ public abstract class Interactable : MonoBehaviour
 	// Use this for initialization
 	protected virtual void Start () 
 	{
-		DoorCamera.OnLevelEnd += DoorCameraOnOnLevelEnd;
+		Door.OnLevelEnd += DoorCameraOnOnLevelEnd;
 		MyAudio = GetComponent<AudioSource>();
 	}
 
 	private void DoorCameraOnOnLevelEnd(object sender, EventArgs e)
 	{
 		if(IsOn) Interact();
-		OnLevelEnd(DoorCamera.loopNum);
+		OnLevelEnd(Door.loopNum);
 	}
 
 	/// <summary>

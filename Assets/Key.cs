@@ -19,10 +19,11 @@ public class Key : Interactable
 	{
 		if (!MR.enabled) return;
 
+		GetComponent<AudioSource>().Play();
 		MR.enabled = false;
 		pickedUp = true;
 
-		if (DoorCamera.loopNum == 1)
+		if (Door.loopNum == 1)
 		{
 			GameObject.Find("TV").GetComponent<TV>().TurnOnEscape();
 			var s = GameObject.Find("Switch").GetComponent<Switch>();
@@ -37,7 +38,8 @@ public class Key : Interactable
 		base.OnLevelEnd(i);
 		transform.position = Postions[i].position;
 		pickedUp = false;
-		Invoke("SetActiveDelay", Random.Range(15,30));		
+		Invoke("SetActiveDelay", Random.Range(25,40));		
+		Debug.Log(i);
 	}
 
 	void SetActiveDelay()
@@ -52,8 +54,10 @@ public class Key : Interactable
 	}
 
 	// Place key when player not looking
-	void Update () 
-	{				
+	void Update ()
+	{
+		if (Input.GetKeyDown(KeyCode.P)) SetActiveDelay(); //For testing
+		
 		if (placeKeyWhenCan)
 		{	
 			var v = transform.position - playerFacing.transform.position;			
