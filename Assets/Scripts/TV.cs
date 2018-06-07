@@ -39,5 +39,6 @@ public class TV : Interactable
     public void TurnOnEscape()
     {
         Escape.SetActive(true);
+        PlaneOff.SetActive(false);
     }
 }
