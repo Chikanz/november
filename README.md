@@ -1,4 +1,6 @@
-# Art-Deco
+# Art Deco
+
+![really sweet looking room](https://i.imgur.com/vRwzfWY.png)
 
 Art deco escape room made for Immersive Assignment 3. Built with Unity 2018.1.
 
