@@ -8,7 +8,11 @@ public class Switch : Interactable
     public GameObject[] Lights;
     public AudioClip SwitchClip;
 
-    public Transform SwitchObj;   
+    public Transform SwitchObj;
+
+    public bool IsWebGl;
+    
+    public GameObject[] RelfectionProbes;
 
     public override void Interact()
     {
@@ -28,7 +32,12 @@ public class Switch : Interactable
             g.SetActive(on);
         }
         
-        UpdateProbe.OnOnLightChanged();
+        if(!IsWebGl) UpdateProbe.OnOnLightChanged();
+        else
+        {
+            RelfectionProbes[0].SetActive(on);
+            RelfectionProbes[1].SetActive(!on);
+        }
     }
 
     protected override void OnLevelEnd(int i)
