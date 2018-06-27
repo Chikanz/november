@@ -2956,13 +2956,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 469793027}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -94.6, y: 54.9, z: 261.2}
-  m_LocalScale: {x: 15.479041, y: 15.479039, z: 15.479039}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -8.259785, y: 168.8, z: -2.4352932}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 267618462}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &469793029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3009,12 +3009,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ce7ef0db708312a4e858910821ea0f43, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 29a369d4216334e4682f3d0f0b47bbe6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 8.52, y: 8.54}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3848,10 +3848,10 @@ RectTransform:
   m_Father: {fileID: 1563978592}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 40}
+  m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &565774485
 MonoBehaviour:
@@ -3874,10 +3874,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1128bd0206a3fab4b813d6db5364cb61, type: 3}
-    m_FontSize: 39
+    m_FontSize: 13
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 8
     m_MaxSize: 161
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -3885,7 +3885,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\na game by zac \n@duckpizza_"
+  m_Text: "a game by zac \n@duckpizza_"
 --- !u!222 &565774486
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9231,7 +9231,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1128bd0206a3fab4b813d6db5364cb61, type: 3}
-    m_FontSize: 62
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -9583,7 +9583,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -11530,7 +11530,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 1
+  MinDistance: 8.68229
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -11566,7 +11566,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -12563,7 +12563,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

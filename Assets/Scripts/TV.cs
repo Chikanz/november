@@ -12,16 +12,16 @@ public class TV : Interactable
 
     public override void Interact()
     {
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().volume = 1;
+        GetComponent<AudioSource>().PlayOneShot(Switch,1);
+        
         if(!CanInteract) return;
         
         IsOn = !IsOn;        
 
         PlaneOff.SetActive(!IsOn);
         PlaneOn.SetActive(IsOn);
-
-        GetComponent<AudioSource>().Stop();
-        GetComponent<AudioSource>().volume = 1;
-        GetComponent<AudioSource>().PlayOneShot(Switch,1);
     }
 
     protected override void OnLevelEnd(int i)
