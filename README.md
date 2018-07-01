@@ -1,8 +1,18 @@
-# Art Deco
+# november
+
+[![forthebadge](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/cc-by.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/gluten-free.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/contains-technical-debt.svg)](https://forthebadge.com)
+
 
 ![really sweet looking room](https://i.imgur.com/vRwzfWY.png)
 
-Art deco escape room made for Immersive Assignment 3. Built with Unity 2018.1.
+## [play it here](https://snootboop.itch.io/november)
+
+Escape room/walking sim thing built with Unity 2018.1.
+
+All models were made by me and are CC-BY, but just please don't look at the code ok?
 
 Audio from freesound + public domain:
 
